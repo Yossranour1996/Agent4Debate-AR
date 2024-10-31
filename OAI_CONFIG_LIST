@@ -1,0 +1,60 @@
+[
+    {
+        "model": "tavily",
+        "api_key": ""
+    },
+    {
+        "model": "google-research",
+        "api_key": ""
+    },
+    {
+        "model": "qwen/qwen-2-72b-instruct",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "google/gemini-pro-1.5",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "google/gemini-flash-1.5",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "anthropic/claude-3-haiku",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "anthropic/claude-3.5-sonnet",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "openai/gpt-4o-mini",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "openai/gpt-4o",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "qwen/qwen-2-7b-instruct",
+        "base_url": "",
+        "api_key": ""
+    },
+    {
+        "model": "deepseek-chat",
+        "base_url": "https://api.deepseek.com",
+        "api_key": ""
+    },
+    {
+        "model": "glm-4-air",
+        "api_key": "",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4/"
+    }
+]
