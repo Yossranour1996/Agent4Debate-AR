@@ -7,8 +7,10 @@ class Role(object):
     def __init__(self, name, prompt_map: Dict, llm_config: List[Dict], seed:int = 42):
         self.name = name
         # load prompt file
-        self.prompt_map = {k: open(v, 'r').read() for k, v in prompt_map.items()}
         
+        # self.prompt_map = {k: open(v, 'r').read() for k, v in prompt_map.items()}
+        self.prompt_map = {k: open(v, 'r', encoding='utf-8').read() for k, v in prompt_map.items()}
+
         self.llm_config = llm_config
         self.seed = seed
         
@@ -20,7 +22,7 @@ class Role(object):
     def init_agent(self):
         agent = autogen.AssistantAgent(
             name = self.name,
-            system_message=self.prompt_map.get("zh"),
+            system_message=self.prompt_map.get("ar"),
             llm_config={
                 "timeout": 600,
                 "seed": self.seed,
@@ -38,7 +40,7 @@ class Role(object):
         }
         self.agent.client = OpenAIWrapper(**llm_config)
     
-    def switch_language(self, lang="zh"):
+    def switch_language(self, lang="ar"):
         self.agent._oai_system_message = [
             {
                 "content": self.prompt_map.get(lang),

@@ -1,4 +1,4 @@
-export TAVILY_API_KEY=fill your taily api key here
-
+set -x
+export TAVILY_API_KEY=""
 nohup python main.py > output/api.log 2>&1 &
-streamlit run src/arena.py
+streamlit run src/arena_eng.py

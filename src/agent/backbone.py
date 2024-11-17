@@ -2,18 +2,22 @@ import json
 import warnings
 from abc import ABC, abstractmethod
 from typing import Dict, List
+import os
 
 import autogen
 from autogen import ChatResult, OpenAIWrapper
+import os
 
 class BaseAgent(ABC):
     def __init__(self, roles: List, user, system_prompt_map: Dict, task_prompt_map: Dict, llm_config: List[Dict], max_round: int = 25):
         self.roles = roles
         self.user = user
         self.llm_config = llm_config
-        self.system_prompt_map = {k: open(v, 'r').read() for k, v in system_prompt_map.items()}
-        self.task_prompt_map = {k: open(v, 'r').read() for k, v in task_prompt_map.items()}
-        
+        # self.system_prompt_map = {k: open(v, 'r').read() for k, v in system_prompt_map.items()}
+        # self.task_prompt_map = {k: open(v, 'r').read() for k, v in task_prompt_map.items()}
+        self.system_prompt_map = {k: open(v, 'r', encoding='utf-8-sig').read() for k, v in system_prompt_map.items()}
+        self.task_prompt_map = {k: open(v, 'r', encoding='utf-8-sig').read() for k, v in task_prompt_map.items()}
+
         group = [user] + [role.agent for role in self.roles]
         self.groupchat = autogen.GroupChat(
             agents=group,
@@ -52,7 +56,7 @@ class BaseAgent(ABC):
             )
         return prompts
     
-    def switch_language(self, lang="zh"):
+    def switch_language(self, lang="ar"):
         self.task_prompt = self.task_prompt_map.get(lang)
         self.system_prompt = self.system_prompt_map.get(lang)
         

@@ -2,6 +2,7 @@
 
 ## Update
 
+- **2024-10-30**: Opensource our code.
 - **2024-08-09**: Ongoing work, coming soon.
 
 ## Overview of Agent4Debate
@@ -22,7 +23,6 @@ Our debate structure comprises three distinct stages, namely *constructive argum
 <p align="center">
     <font face="Times New Roman", colo=grey> Figure 2. Competitive debate format.
 </p>
-
 
 
 ## Elo Ranking
@@ -84,7 +84,6 @@ Table 4: Human-Elo Ranking.
 <p align="center">
     <font face="Times New Roman", colo=grey> <em>Figure 4. Case study of the debate motion "Justice is nothing but interest. (Pro side) / Justice is nothing more than interest (Con side)". Pro side is Agent4Debate (GPT-4o), Con side is Agent4Debate (Claude-3.5-sonnet). </em>
 </p>
-
 
 ## Related Work
 [AIDebater 2024](http://www.fudan-disc.com/sharedtask/AIDebater24/index.html)

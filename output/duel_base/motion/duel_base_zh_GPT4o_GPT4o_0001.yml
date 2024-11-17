@@ -1,0 +1,17 @@
+motion: 欧盟新版权法限制二次创作，保护（正）/限制（反）了艺术发展
+pro_side:
+- name: 正方
+con_side:
+- name: 反方
+pro_model:
+- model: openai/gpt-4o
+con_model:
+- model: openai/gpt-4o
+info_slide: 正反双方的举证责任相同
+speech_order:
+- 正方
+- 反方
+- 正方
+- 反方
+- 反方
+- 正方

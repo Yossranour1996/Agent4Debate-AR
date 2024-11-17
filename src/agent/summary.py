@@ -1,6 +1,7 @@
 from typing import Dict, List
 from src.agent.backbone import BaseAgent
 from src.agent.utils import is_function_call
+import traceback  # Make sure this import is included
 
 class SummaryAgent(BaseAgent):
     def __init__(self, **kwargs):
@@ -76,11 +77,13 @@ class SummaryAgent(BaseAgent):
         
         return result
     
+
     def run(self, topic: str, position: str,
             positive_argument: str, negative_argument: str, 
-            positive_rebuttal: str, negative_rebuttal: str, negative_summary: str,
-            reference: str
-        ):
+            positive_rebuttal: str, negative_rebuttal: str, 
+            negative_summary: str, reference: str) -> Dict:
+        
+        # Format the topic with relevant arguments
         topic = self.task_prompt.format(
             Topic=topic,
             Position=position,
@@ -91,20 +94,44 @@ class SummaryAgent(BaseAgent):
             NegativeSummary=negative_summary,
             Reference=reference
         )
-        result = self.user.initiate_chat(
-            self.manager,
-            message=self.user.message_generator,
-            topic=topic,
-            prompt=self.system_prompt
-        )
-        self.record(result)
-        
+
+        # Try to initiate chat and handle exceptions
+        try:
+            result = self.user.initiate_chat(
+                self.manager,
+                message=self.user.message_generator,
+                topic=topic,
+                prompt=self.system_prompt
+            )
+        except Exception as e:
+            print("Error during initiate_chat:", str(e))
+            print("Error (UTF-8):", str(e).encode("utf-8", errors="replace").decode("utf-8"))
+            print("Traceback:")
+            traceback.print_exc()
+            return {
+                "result": "Error occurred during chat initiation",
+                "reference": "N/A",
+                "chat_history": []
+            }
+
+        # Log the raw result for debugging
+
+        # Ensure 'chat_history' exists in the result
+        if not hasattr(result, 'chat_history'):
+            print("Error: 'chat_history' not found in result")
+            return {
+                "result": "No chat history",
+                "reference": "N/A",
+                "chat_history": []
+            }
+
+        # Process the chat history
         chat_history = result.chat_history
         _reference = self.get_reference(reference=reference, chat_history=chat_history)
-        result = self.get_result(chat_history)
-        
+        result_text = self.get_result(chat_history)
+
         return {
-            "result": result,
+            "result": result_text,
             "reference": _reference,
             "chat_history": chat_history
         }

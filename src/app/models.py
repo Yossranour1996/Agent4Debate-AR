@@ -7,7 +7,7 @@ class MethodList(BaseModel):
 class BaseInput(BaseModel):
     Topic: str
     Position: str
-    Language: str = "zh"
+    Language: str = "ar"
     Model: Optional[str] = "deepseek-chat"
     
 class RebuttalInput(BaseInput):

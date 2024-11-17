@@ -1,0 +1,3 @@
+duel_base_zh_GPT4o_GPT4o_0001  欧盟新版权法限制二次创作，保护（正）/限制（反）了艺术发展
+duel_base_en_GPT4o_GPT4o_0002  In contemporary China, should the trafficking of women and children be punished as severely as the purchase of such individuals (Pro) / should it not (Con)?
+duel_base_ar_GPT4o_GPT4o_0003  هل يمكن أن يؤدي فرض ضريبة بيئية إلى تحسين التلوث (مؤيد) / أم لا يمكن ذلك (معارض)؟

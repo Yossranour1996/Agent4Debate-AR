@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug main.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",  // Path to your main file
+            "console": "integratedTerminal",
+
+            "justMyCode": false  // Set to false to debug external libraries as well
+        }
+    ]
+}

@@ -37,7 +37,7 @@ def load_agent(name, config):
             llm_config=llm_config,
             task_prompt_map = config.get("task"),
             system_prompt_map = config.get("system"),
-            max_round=15,
+            max_round=5,
         )
     elif name == "summary":
         agent = SummaryAgent(
@@ -46,7 +46,7 @@ def load_agent(name, config):
             llm_config=llm_config,
             task_prompt_map = config.get("task"),
             system_prompt_map = config.get("system"),
-            max_round=15,
+            max_round=5,
         )
     else:
         raise ValueError(f"Agent {name} not found.")

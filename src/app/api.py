@@ -7,6 +7,8 @@ from src.agent.rebuttal import RebuttalAgent
 from src.agent.summary import SummaryAgent
 from src.app.models import (AgentDebugInput, AgentDebugOutput, AgentOutput,
                             BaseInput, MethodList, RebuttalInput, SummaryInput)
+import traceback  # Add this import at the top of api.py
+
 
 
 def create_app(argument_agent: "ArgumentAgent", rebuttal_agent: "RebuttalAgent", summary_agent: "SummaryAgent"):
@@ -14,7 +16,19 @@ def create_app(argument_agent: "ArgumentAgent", rebuttal_agent: "RebuttalAgent",
         title = "DebateAgent",
         summary = "A multi-agent system of debate process, include argument, rebuttal and summary agent."
     )
-    
+    @app.exception_handler(Exception)
+    async def global_exception_handler(request: Request, exc: Exception):
+        print("Unhandled Exception:", exc)  # Log the full error
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={
+            "detail": "An unexpected error occurred.", 
+            "input": str(request),
+            "error": str(exc)
+        },
+    )
+
+    app.add_exception_handler(Exception, global_exception_handler)
     # @app.exception_handler(Exception)
     # async def global_exception_handler(request: Request, exc: Exception):
     #     return JSONResponse(
@@ -96,7 +110,6 @@ def create_app(argument_agent: "ArgumentAgent", rebuttal_agent: "RebuttalAgent",
             Result = result["result"],
             ChatHistory = result["chat_history"]
         )
-    
     @app.post(
         "/v1/rebuttal",
         response_model=AgentOutput,

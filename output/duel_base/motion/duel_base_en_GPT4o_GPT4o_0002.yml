@@ -1,0 +1,18 @@
+motion: In contemporary China, should the trafficking of women and children be punished
+  as severely as the purchase of such individuals (Pro) / should it not (Con)?
+pro_side:
+- name: Pro
+con_side:
+- name: Con
+pro_model:
+- model: openai/gpt-4o
+con_model:
+- model: openai/gpt-4o
+info_slide: Both sides have equal burden of proof
+speech_order:
+- Pro
+- Con
+- Pro
+- Con
+- Con
+- Pro

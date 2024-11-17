@@ -6,8 +6,9 @@ import aiohttp
 import requests
 from autogen._pydantic import PYDANTIC_V1
 from pydantic import BaseModel, Extra, root_validator
-
+from dotenv import load_dotenv
 TAVILY_API_URL = "https://api.tavily.com"
+load_dotenv()
 
 def get_from_dict_or_env(data: Dict[str, Any], key: str, env_key: str, default: Optional[str] = None) -> str:
     """Get a value from a dictionary or an environment variable."""

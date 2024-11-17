@@ -5,56 +5,42 @@
     },
     {
         "model": "google-research",
+        "base_url": "https://your-google-research-endpoint.com",
         "api_key": ""
     },
     {
         "model": "qwen/qwen-2-72b-instruct",
-        "base_url": "",
+        "base_url": "https://api.qwen.com/v2",
         "api_key": ""
     },
     {
         "model": "google/gemini-pro-1.5",
-        "base_url": "",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent",
         "api_key": ""
     },
     {
         "model": "google/gemini-flash-1.5",
-        "base_url": "",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-1.5:generateContent",
         "api_key": ""
     },
     {
         "model": "anthropic/claude-3-haiku",
-        "base_url": "",
+        "base_url": "https://api.anthropic.com/v1",
         "api_key": ""
     },
     {
         "model": "anthropic/claude-3.5-sonnet",
-        "base_url": "",
+        "base_url": "https://api.anthropic.com/v1",
         "api_key": ""
     },
     {
         "model": "openai/gpt-4o-mini",
-        "base_url": "",
+        "base_url": "https://api.openai.com/v1",
         "api_key": ""
     },
     {
-        "model": "openai/gpt-4o",
-        "base_url": "",
+        "model": "gpt-4o",
+        "base_url": "https://api.openai.com/v1",
         "api_key": ""
-    },
-    {
-        "model": "qwen/qwen-2-7b-instruct",
-        "base_url": "",
-        "api_key": ""
-    },
-    {
-        "model": "deepseek-chat",
-        "base_url": "https://api.deepseek.com",
-        "api_key": ""
-    },
-    {
-        "model": "glm-4-air",
-        "api_key": "",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4/"
     }
 ]

@@ -3,6 +3,7 @@ from typing import Dict
 from src.agent.backbone import BaseAgent
 from src.agent.utils import is_function_call
 
+import traceback
 
 class ArgumentAgent(BaseAgent):
     def __init__(self, **kwargs):
@@ -91,27 +92,50 @@ class ArgumentAgent(BaseAgent):
         return self.postprocess(result)
     
     def run(self, topic, position) -> Dict:
+    # Format the topic and enforce UTF-8 for debug
         topic = self.task_prompt.format(
             topic=topic,
             position=position
         )
-        
-        result = self.user.initiate_chat(
-            self.manager,
-            message=self.user.message_generator,
-            topic=topic,
-            prompt = self.system_prompt,
-        )
-        
-        self.record(result)
-        
+
+        # Try to initiate chat and handle any exceptions
+        try:
+            result = self.user.initiate_chat(
+                self.manager,
+                message=self.user.message_generator,
+                topic=topic,
+                prompt=self.system_prompt,
+            )
+        except Exception as e:
+            print("Error during initiate_chatkkl:", str(e))
+            print("Error during initiate_chatkk:", str(e).encode("utf-8", errors="replace").decode("utf-8"))
+            print("Traceback:")
+            traceback.print_exc()
+            return {
+                "result": "Error occurred during chat initiation",
+                "reference": "N/A",
+                "chat_history": []
+            }
+
+        # Log the result to debug
+
+
+        # Ensure chat_history exists
+        if not hasattr(result, 'chat_history'):
+            print("Error: 'chat_history' not found in result")
+            return {
+                "result": "No chat history",
+                "reference": "N/A",
+                "chat_history": []
+            }
+
+        # Process the chat history
         chat_history = result.chat_history
         reference = self.get_reference(chat_history)
-        result = self.get_result(chat_history)
-        
-        
+        result_text = self.get_result(chat_history)
+
         return {
-            "result": result,
+            "result": result_text,
             "reference": reference,
             "chat_history": chat_history
         }
