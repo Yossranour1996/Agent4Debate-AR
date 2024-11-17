@@ -1,9 +1,9 @@
-src/pages/1_⚔️_Self_Duel/
-src/pages/2_🗡️_Human_vs_Agent4DB/
-src/pages/3_🚘_Argument_Assistant/
-src/pages/assistant/
-src/pages/self_dual_eng
-src/pages/human_vs_agent_eng/
+src/pages/three.py
+src/pages/two.py
+src/pages/one.py
+src/pages/assistant.py
+src/pages/self_dual_eng.py
+src/pages/human_vs_agent_eng.py
 src/arena_eng.py
 src/utils_eng.py
 src/constant_eng.py
