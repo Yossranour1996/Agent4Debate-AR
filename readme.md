@@ -1,7 +1,8 @@
 # Agent4Debate: Can LLMs Beat Humans in Debating? A Dynamic Multi-agent Framework for Competitive Debate
 
-## Update
+This is the arabic version of the debate agent.
 
+## Update
 - **2024-10-30**: Opensource our code.
 - **2024-08-09**: Ongoing work, coming soon.
 
